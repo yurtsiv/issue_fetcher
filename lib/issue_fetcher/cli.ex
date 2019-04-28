@@ -6,7 +6,9 @@ defmodule IssueFetcher.CLI do
   """
 
   def run(argv) do
-    parse_args(argv)
+    argv
+    |> parse_args
+    |> process
   end
 
   @doc """
@@ -38,5 +40,17 @@ defmodule IssueFetcher.CLI do
       _ ->
         :help
     end
+  end
+
+  def process(:help) do
+    IO.puts """
+    usage: issue_fetcher <user> <project> [count | #{@default_count}]
+    """
+    
+    System.halt(0)
+  end
+
+  def process({user, project, _count}) do
+    IssueFetcher.GitHubIssues.fetch(user, project) 
   end
 end
