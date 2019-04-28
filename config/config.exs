@@ -3,3 +3,6 @@
 use Mix.Config
 
 config :issue_fetcher, github_url: "https://api.github.com"
+
+config :logger, compile_time_purge_level: :info
+
