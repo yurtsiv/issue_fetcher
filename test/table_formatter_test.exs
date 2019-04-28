@@ -5,6 +5,7 @@ defmodule IssueFetcher.TableFormatterTest do
 
   alias IssueFetcher.TableFormatter, as: TF
 
+  doctest IssueFetcher.TableFormatter
 
   def test_data do
     [
