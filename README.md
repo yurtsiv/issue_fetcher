@@ -10,5 +10,5 @@ A simple command line utility for fetching issued from GitHub repositories
 
 ## Usage
 
-issue_fetcher \<user\> \<project\> [count | 4]
+`issue_fetcher \<user\> \<project\> [count | 4]`
   
