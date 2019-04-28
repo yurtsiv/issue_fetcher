@@ -1,4 +1,6 @@
 defmodule IssueFetcher.CLI do
+  import IssueFetcher.TableFormatter
+
   @default_count 4
 
   @moduledoc """
@@ -50,11 +52,13 @@ defmodule IssueFetcher.CLI do
     System.halt(0)
   end
 
-  def process({user, project, _count}) do
+  def process({user, project, count}) do
     IssueFetcher.GitHubIssues.fetch(user, project) 
     |> decode_response
     |> convert_to_list_of_hashdicts
     |> sort_ascending
+    |> Enum.take(count)
+    |> print_table_for_columns(["number", "created_at", "title"])
 
   end
 
