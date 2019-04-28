@@ -21,7 +21,8 @@ defmodule IssueFetcher.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.5"}
+      {:httpoison, "~> 1.5"},
+      {:jsx, "~> 2.9"}
     ]
   end
 end
