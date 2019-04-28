@@ -1,6 +1,6 @@
 # Issue fetcher
 
-A simple command line utility for fetching issued from GitHub repositories
+A simple command line utility for fetching issues from GitHub repositories
 
 (based on the example from [Programming Elixir 1.6](https://pragprog.com/book/elixir16/programming-elixir-1-6) book)
 
