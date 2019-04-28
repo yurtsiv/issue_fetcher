@@ -1,21 +1,14 @@
-# IssueFetcher
+# Issue fetcher
 
-**TODO: Add description**
+A simple command line utility for fetching issued from GitHub repositories
+
+(based on the example from [Programming Elixir 1.6](https://pragprog.com/book/elixir16/programming-elixir-1-6) book)
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `issue_fetcher` to your list of dependencies in `mix.exs`:
+[Download](https://drive.google.com/open?id=17fEJOUvT0jSFT7lTj12UuTp--_99poxu) a binary
 
-```elixir
-def deps do
-  [
-    {:issue_fetcher, "~> 0.1.0"}
-  ]
-end
-```
+## Usage
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/issue_fetcher](https://hexdocs.pm/issue_fetcher).
-
+issue_fetcher \<user\> \<project\> [count | 4]
+  
