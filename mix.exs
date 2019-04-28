@@ -6,6 +6,7 @@ defmodule IssueFetcher.MixProject do
       app: :issue_fetcher,
       version: "0.1.0",
       elixir: "~> 1.8",
+      escript: escript_config(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -24,5 +25,9 @@ defmodule IssueFetcher.MixProject do
       {:httpoison, "~> 1.5"},
       {:jsx, "~> 2.9"}
     ]
+  end
+
+  defp escript_config do
+    [main_module: IssueFetcher.CLI]
   end
 end

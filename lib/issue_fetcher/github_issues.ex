@@ -1,5 +1,5 @@
 defmodule IssueFetcher.GitHubIssues do
-  @user_agent [{"User-agent", "Elixir yurtsiv.stepan@gmail.com"}]
+  @user_agent [{"User-agent", "yurtsiv yurtsiv.stepan@gmail.com"}]
   @github_url Application.get_env(:issue_fetcher, :github_url)
 
   def fetch(user, project) do
@@ -9,11 +9,21 @@ defmodule IssueFetcher.GitHubIssues do
   end
 
   defp get_url(user, project) do
-    "#{@github_url}/#{user}/#{project}/issues"
+    "#{@github_url}/repos/#{user}/#{project}/issues"
   end
 
-  defp handle_response({:ok, resp}) do
-    {:ok, :jsx.decode(resp.body)}
+  defp handle_response({
+    :ok,
+    %HTTPoison.Response{ status_code: 404 }
+  }) do
+    {:error, "Not found"}
+  end
+
+  defp handle_response({
+    :ok,
+    %HTTPoison.Response{ status_code: 200, body: body }
+  }) do
+    {:ok, :jsx.decode(body)}
   end
 
   defp handle_response({:error, error}) do
