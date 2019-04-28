@@ -53,6 +53,7 @@ defmodule IssueFetcher.CLI do
   def process({user, project, _count}) do
     IssueFetcher.GitHubIssues.fetch(user, project) 
     |> decode_response
+    |> convert_to_list_of_hashdicts
 
   end
 
@@ -60,5 +61,10 @@ defmodule IssueFetcher.CLI do
 
   def decode_response({:error, error}) do
     IO.puts "Error fetching from GitHub: #{error}"
+  end
+
+  def convert_to_list_of_hashdicts(list) do
+    list
+    |> Enum.map(&Enum.into(&1, HashDict.new))
   end
 end
